@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const Player = ({initialPlayerName, symbol, isActive}) => {
+const Player = ({initialPlayerName, symbol, isActive, onChangeName}) => {
 
   const [playerName, setPlayerName] = useState(initialPlayerName)
   const [isEditing, setIsEditing] = useState(false)
@@ -16,6 +16,9 @@ const Player = ({initialPlayerName, symbol, isActive}) => {
     * would produce the same output as a single on due to them both being evaluated on the current state
     */ 
     setIsEditing((isEditing) => !isEditing)
+    if (isEditing) {
+      onChangeName(symbol, playerName)
+    }
   }
 
   function handleChange(event) {
