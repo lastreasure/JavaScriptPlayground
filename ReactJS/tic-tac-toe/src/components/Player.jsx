@@ -16,7 +16,6 @@ const Player = ({initialPlayerName, symbol, isActive}) => {
     * would produce the same output as a single on due to them both being evaluated on the current state
     */ 
     setIsEditing((isEditing) => !isEditing)
-
   }
 
   function handleChange(event) {
