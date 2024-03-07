@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-    /* LEARNING NOTE - 2 - When to use useRef and useState
+    /* P2 - LEARNING NOTE - 2 - When to use useRef and useState
     * When assigning a value using state we must evaluate whether we want 
     * the code to rerender after being updated and be reflected in the UI
     * (we would not use state for 'behind the scenes' values with no direct UI impact)
@@ -16,7 +16,7 @@ export default function Player() {
 
   function handleClick() {
     setEnteredPlayerName(playerName.current.value);
-    /* LEARNING NOTE - 1 - Caution around useRef manipulating DOM directly
+    /* P2 - LEARNING NOTE - 1 - Caution around useRef manipulating DOM directly
     * This assignment is more imperative than declarative code by changing the DOM directly 
     * than letting React amend the DOM.
     * We must be careful to not let useRef read and manipulate all values on the page
