@@ -1,10 +1,13 @@
-### Tic Tac Toe Game
-Simple game of tic tac toe
+### Final Countdown Game
+Challenge to stop the timer as close to the given allotted time as possible
 
 Functionalities:
-* Play a game and then rematch
-* Change name of players
-* See logs of the game output after every action
+* Input your name
+* Press the button
+* Dialog pop up
+
+Technologies learned:
+* UseRef and Portals
 
 To run:
 ```

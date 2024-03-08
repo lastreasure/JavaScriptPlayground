@@ -7,7 +7,7 @@ const Player = ({initialPlayerName, symbol, isActive, onChangeName}) => {
 
 
   function handleEditClick() {
-    /* LEARNING NOTE - 1 - Why to pass state updates with a function
+    /* P1 - LEARNING NOTE - 1 - Why to pass state updates with a function
     * Pass a function rather than just the state to guarantee latest state value
     * this is because state updates are not instantaneous but scheduled 
     * e.g. having two consecutive states like so 

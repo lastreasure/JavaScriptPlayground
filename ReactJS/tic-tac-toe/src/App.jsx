@@ -16,7 +16,7 @@ const INITIAL_GAME_BOARD = [
   [null, null, null]
 ]
 
-/* LEARNING NOTE - 2 - Be conscious of what variables need to be in state
+/* P1 - LEARNING NOTE - 2 - Be conscious of what variables need to be in state
 * Helper function to remove activePlayer from state and derive from game turns state
 * this aids with duplication of code and efficiency of code preventing unneeded re-renders
 * replacing:
