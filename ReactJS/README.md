@@ -21,3 +21,6 @@ Key learning notes:
 * P2 - LEARNING NOTE - 4 - Use forward ref react method when passing down ref in props
 * P2 - LEARNING NOTE - 5 - Purpose of React Portal
 ```
+
+### Project Management App - Project 3
+Very basic app to add projects and tasks.
