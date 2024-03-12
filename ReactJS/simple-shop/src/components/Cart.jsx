@@ -1,7 +1,7 @@
 import { CartContext } from "../store/shopping-cart-context";
 import { useContext } from 'react'
 
-export default function Cart({ onUpdateItemQuantity }) {
+export default function Cart() {
 
   /**
    * P4 - LEARNING NOTE - 1 - You can destructure context items
@@ -23,7 +23,7 @@ export default function Cart({ onUpdateItemQuantity }) {
    * so is often no the default approach
    */
 
-  const { items } = useContext(CartContext);
+  const { items, updateItemQuantity } = useContext(CartContext);
   const totalPrice = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -44,11 +44,11 @@ export default function Cart({ onUpdateItemQuantity }) {
                   <span> ({formattedPrice})</span>
                 </div>
                 <div className="cart-item-actions">
-                  <button onClick={() => onUpdateItemQuantity(item.id, -1)}>
+                  <button onClick={() => updateItemQuantity(item.id, -1)}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => onUpdateItemQuantity(item.id, 1)}>
+                  <button onClick={() => updateItemQuantity(item.id, 1)}>
                     +
                   </button>
                 </div>
@@ -74,7 +74,7 @@ export default function Cart({ onUpdateItemQuantity }) {
    * Though this approach is a bit more cumbersome and more difficult to read
    * so is often no the default approach
    */
-  
+
 //   return (
 //     <CartContext.Consumer> 
 //       {(cartCtx) =>  {
