@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react'
+import ProgressBar from './ProgressBar';
 
 const TIMER = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
   const [remainingTime, setRemainingTime] = useState(TIMER)
 
-  useEffect ( () => {
+  useEffect (() => {
       const interval = setInterval(() => {
       setRemainingTime(prevTime => prevTime - 10)
     }, 10)
@@ -44,8 +45,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
-      {/* <ProgressBar timer={TIMER} /> */}
-      <progress value={remainingTime} max={TIMER}/>
+      <ProgressBar timer={TIMER} />
     </div>
   );
 }
