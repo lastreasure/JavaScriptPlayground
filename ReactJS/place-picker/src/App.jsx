@@ -26,6 +26,7 @@ function App() {
   // })
 
   useEffect(() => {
+    // Side Effect 1 example
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
         AVAILABLE_PLACES,
@@ -53,7 +54,22 @@ function App() {
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+
+    /* P5 - LEARNING NOTE - 2 - Not all side effects need useEffect
+    * Side effect 2 example - because this is not related to rendering the jsx code
+    * this does not have to exist within the useEffect 
+    * because it will not create an infinite loop as it is only ever executed from 
+    * this function being triggered from a user interaction
+    * you only need the useEffect to prevent infinite loops or
+    * when you have code that can only run after the component executed at least once
+    */
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
+    // checking to see if we already have the id stored 
+    if(storedIds.indexOf(id) === -1) {
+      localStorage.setItem('selectedPlaces', JSON.stringify([id, ...storedIds]))
+    }
   }
+
 
   function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
