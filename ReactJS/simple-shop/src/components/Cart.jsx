@@ -66,14 +66,6 @@ export default function Cart() {
 
 
 
-   /**
-   * P4 - LEARNING NOTE - 2 - use Context Hook vs Consumer
-   * Instead of using the useContext hook
-   * you can wrap the component in Consumer, pass the jsx into a function 
-   * and access all the context state using this method
-   * Though this approach is a bit more cumbersome and more difficult to read
-   * so is often no the default approach
-   */
 
 //   return (
 //     <CartContext.Consumer> 
