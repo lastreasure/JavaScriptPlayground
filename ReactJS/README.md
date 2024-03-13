@@ -24,3 +24,13 @@ Key learning notes:
 
 ### Project Management App - Project 3
 Very basic app to add projects and tasks.
+
+### Simple Shop App - Project 4
+Very basic store where users can add items to a Cart and amend the amount of items in the cart
+
+Key learning notes:
+```
+* P4 - LEARNING NOTE - 1 - You can destructure context items
+* P4 - LEARNING NOTE - 2 - use Context Hook vs Consumer
+* P4 - LEARNING NOTE - 3 - useReducer
+```

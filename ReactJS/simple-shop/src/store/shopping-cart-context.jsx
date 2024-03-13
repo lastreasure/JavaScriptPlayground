@@ -7,7 +7,7 @@ export const CartContext = createContext({
   updateItemQuantity: () => {}
 });
 
-/* P4 - LEARNING NOTE - 4 - useReducer
+/* P4 - LEARNING NOTE - 3 - useReducer
 * creating the useReducer outside of the function as it wont need to be 
 * recreated whenever the component functino re-executes
 */ 
