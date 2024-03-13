@@ -1,15 +1,40 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import Places from './components/Places.jsx';
 import { AVAILABLE_PLACES } from './data.js';
 import Modal from './components/Modal.jsx';
 import DeleteConfirmation from './components/DeleteConfirmation.jsx';
 import logoImg from './assets/logo.png';
+import { sortPlacesByDistance } from './loc.js';
 
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [availablePlaces, setAvailablePlaces] = useState([]);
+
+  /* P5 - LEARNING NOTE - 1 - What is a side effect?
+  * A React side-effect occurs when we use something that is outside the scope of React.js in our React components e.g. Web APIs
+  * This component is a side effect because it's not related to the 
+  * main goal of the App component function -> the main goal of an App.js is to return renderable jsx code,
+  * fetching the users location is not related to this, and this function is not called immeditely
+  * (Navigator is an in built browser obj)
+  */
+  // navigator.geolocation.getCurrentPostiion((position) => {
+  //   const sortedPlaces = 
+  //   sortPlacesByDistance(AVAILABLE_PLACES, postiion.coords.latitude, position.coords.longitude)
+  // })
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const sortedPlaces = sortPlacesByDistance(
+        AVAILABLE_PLACES,
+        position.coords.latitude,
+        position.coords.longitude
+      );
+      setAvailablePlaces(sortedPlaces);
+    });
+  }, []);
 
   function handleStartRemovePlace(id) {
     modal.current.open();
@@ -64,6 +89,7 @@ function App() {
         <Places
           title="Available Places"
           places={AVAILABLE_PLACES}
+          fallbackText="Sorting places by distances..."
           onSelectPlace={handleSelectPlace}
         />
       </main>
