@@ -7,10 +7,15 @@ import DeleteConfirmation from './components/DeleteConfirmation.jsx';
 import logoImg from './assets/logo.png';
 import { sortPlacesByDistance } from './loc.js';
 
+// Defined outside of App as we only need this to run once on first render
+const storeIds = JSON.parse(localStorage.getItem('selectedPlaces')) || []
+const storedPlaces = storeIds.map(id => AVAILABLE_PLACES.find((place) => place.id === id))
+
 function App() {
+
   const modal = useRef();
   const selectedPlace = useRef();
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
   const [availablePlaces, setAvailablePlaces] = useState([]);
 
   /* P5 - LEARNING NOTE - 1 - What is a side effect?
@@ -36,6 +41,19 @@ function App() {
       setAvailablePlaces(sortedPlaces);
     });
   }, []);
+
+  /* P5 - LEARNING NOTE - 3 - Example of redundant useEffect
+   * This is an example of a redundance use of useEffect
+   * all the code in this instance would complete before the app is finished rendering
+   * and there is no callback functions to execute hence this code is fine to be ran outside of a useEffect
+   * as this code runs syncronously and immediately
+   */
+  // useEffect(() => {
+  //   const storeIds = JSON.parse(localStorage.getItem('selectedPlaces')) || []
+  //   const storedPlaces = storeIds.map(id => AVAILABLE_PLACES.find((place) => place.id === id))
+  //   setPickedPlaces(storedPlaces)
+  // }, []
+  // )
 
   function handleStartRemovePlace(id) {
     modal.current.open();
@@ -76,6 +94,9 @@ function App() {
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
     modal.current.close();
+
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
+    localStorage.setItem('selectedPlaces', JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)))
   }
 
   return (
