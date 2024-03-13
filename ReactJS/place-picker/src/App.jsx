@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
 import Places from './components/Places.jsx';
 import { AVAILABLE_PLACES } from './data.js';
@@ -90,7 +90,20 @@ function App() {
   }
 
 
-  function handleRemovePlace() {
+   /* P5 - LEARNING NOTE - 6 - Example of useCallback
+    * The useCallback hook is a built-in hook in React that lets you memoize a callback function by 
+    * preventing it from being recreated on every render. 
+    * In simple terms, it means that the callback function is cached and does not get redefined on every render
+    * 
+    * Ensuring a function is not recreated whenever the surrounding function is executed again
+    * this way if you use the function in a useEffect dependency you'll avoid infinite loops
+    * as react will not have to compare two different instances of the same function -
+    * as the function is recreated when the component rerenders - but 
+    * know it is the same cached object
+    * 
+    * The dependency array here works in the same way as useEffect
+    */
+  const handleRemovePlace = useCallback(function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
@@ -98,7 +111,7 @@ function App() {
 
     const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     localStorage.setItem('selectedPlaces', JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)))
-  }
+  }, [])
 
   return (
     <>
