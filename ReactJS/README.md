@@ -35,7 +35,7 @@ Key learning notes:
 * P4 - LEARNING NOTE - 3 - useReducer
 ```
 
-### Simple Shop App - Project 5 - useEffect & useCallback
+### Place Picker - Project 5 - useEffect & useCallback
 Basic app to add and remove places you would like to visit, options appear as a modal with a progress bar
 
 Key learning notes:
@@ -46,4 +46,15 @@ Key learning notes:
 * P5 - LEARNING NOTE - 4 - Another example of when to use Effect 
 * P5 - LEARNING NOTE - 5 - useEffect clean up function
 * P5 - LEARNING NOTE - 6 - Example of useCallback
+```
+
+### Simple React Quiz - Project 6 - In progress
+
+
+### Counter App - Project 7 
+
+Key learning notes:
+```
+* P7 - LEARNING NOTE - 1 - Function to personalise console.logs
+
 ```
