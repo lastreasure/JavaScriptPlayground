@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
@@ -27,7 +27,21 @@ function isPrime(number) {
   return true;
 }
 
-export default function Counter({ initialCount }) {
+/* P7 - LEARNING NOTE - 2 - memo
+* React.memo is a higher-order component (HOC) provided by React that you can use to memoize the result 
+* of a functional component's rendering. When you wrap a functional component with React.memo, 
+* React will memoize the component's result and only re-render it if its props have changed.
+*
+* memo compares new and old prop values and if they are the same then the
+* component execution funciton would only be reexecuted if they are different
+*
+* in this example the child components of Counter will not be re-rendered when a new num is typed but not set clicked
+* so the initialCount does not change (only the enteredNumber in App does)
+*
+* should aim to wrap memo as high up in the memo tree as possible meaning react has to check the props 
+* before executing the function (hence dont use it on props that will change frequently)
+*/
+const Counter = memo (function Counter({ initialCount }) {
   log('<Counter /> rendered', 1);
   const initialCountIsPrime = isPrime(initialCount);
 
@@ -58,4 +72,6 @@ export default function Counter({ initialCount }) {
       </p>
     </section>
   );
-}
+})
+
+export default Counter;
