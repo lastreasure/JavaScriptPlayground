@@ -1,4 +1,4 @@
-import { useState, memo } from 'react';
+import { useState, memo, useCallback, useMemo } from 'react';
 
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
@@ -43,17 +43,31 @@ function isPrime(number) {
 */
 const Counter = memo (function Counter({ initialCount }) {
   log('<Counter /> rendered', 1);
-  const initialCountIsPrime = isPrime(initialCount);
+
+  /* P7 - LEARNING NOTE - 3 - useMemo
+   * Memo is wrapped around component functions whereas useMemo is wrapped around normal functions that are 
+   * executed in component functions
+   * 
+   * useMemo is only to be used if you have a complex calculation that you want to prevent
+   * 
+   * will only be reevaluated when initialCount changes
+   * 
+   * should not overuse useMemo, as this can cost extra performance
+   */
+  const initialCountIsPrime = useMemo(() => isPrime(initialCount), [initialCount]);
 
   const [counter, setCounter] = useState(initialCount);
 
-  function handleDecrement() {
+  /*
+  * using useCallback here to prevent unneeded recreation of handleIncrement/decrement functions
+  */
+  const handleDecrement = useCallback(function handleDecrement() {
     setCounter((prevCounter) => prevCounter - 1);
-  }
+  }, [])
 
-  function handleIncrement() {
+  const handleIncrement = useCallback(function handleIncrement() {
     setCounter((prevCounter) => prevCounter + 1);
-  }
+  }, [])
 
   return (
     <section className="counter">
