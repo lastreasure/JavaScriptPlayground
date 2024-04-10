@@ -56,5 +56,6 @@ Key learning notes:
 Key learning notes:
 ```
 * P7 - LEARNING NOTE - 1 - Function to personalise console.logs
-
+* P7 - LEARNING NOTE - 2 - memo
+* P7 - LEARNING NOTE - 3 - useMemo
 ```
