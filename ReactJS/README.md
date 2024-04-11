@@ -59,3 +59,12 @@ Key learning notes:
 * P7 - LEARNING NOTE - 2 - memo
 * P7 - LEARNING NOTE - 3 - useMemo
 ```
+
+### Place Picker - Project 8 - FE & BE HTTP Requests
+Basic app to add and remove places you would like to visit, options appear as a modal with a progress bar, with Node BE
+
+Key learning notes:
+```
+* P8 - LEARNING NOTE - 1 - Optimistic updating
+```
+
